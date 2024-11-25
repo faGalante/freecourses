@@ -36,9 +36,6 @@ FreeCourses è una piattaforma dove i docenti possono creare corsi, caricare mat
 ### 5. **Filtraggio dei corsi per categoria**:
    - I corsi sono organizzati per categorie. Gli studenti possono selezionare una categoria dal menu e visualizzare solo i corsi appartenenti a quella categoria, con l'uso di JavaScript per manipolare dinamicamente la visualizzazione.
 
-### 6. **Interfaccia responsive**:
-   - Il sito è ottimizzato per una visualizzazione corretta su dispositivi desktop e mobili grazie all'uso di **Bootstrap** e del design responsive.
-
 ## Tecnologie utilizzate
 
 - **Frontend**:
