@@ -1,0 +1,140 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+{% block home_active %}active{% endblock %}
+
+
+{% block content %} 
+
+<main class="col-lg-8 col-md-12">
+  {% if current_user.docente == 1 %}
+  <table class="table table-hover caption-top">
+   <!--table per i corsi solo docente-->
+    <caption>Lista dei corsi</caption>
+    <thead id="mythead">
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Nome</th>
+        <th scope="col">Categoria</th>
+        <th scope="col">Numero di iscritti</th> 
+      </tr>
+    </thead>
+    <tbody class="table-group-divider">
+      {% for corso in corsi_docente %}
+      <tr>
+        <th scope="row">{{ corso.id_corso }}</th>
+        <td><a href="{{url_for('single_course', id=corso.id_corso)}}">{{ corso.titolo }}</a></td>
+        <td>{{ corso.categoria }}</td>
+        <td>{{ corso.n_iscritti }}</td>
+      </tr>
+      
+
+    </tbody>
+    {% endfor %}
+  </table>
+  {% else %}               
+  
+  <section class="filtro mb-3">
+    <label for="categoryTextInput" class="form-label">Filtra per categoria:</label>
+    <select id="filtercategories" name="filtro" class="form-select" aria-label="Default select example" >
+      <option value="" >Seleziona una categoria</option>
+      <option value="Lingue">Lingue</option>
+      <option value="Informatica">Informatica</option>
+      <option value="Matematica">Matematica</option>
+      <option value="Scienze">Scienze</option>
+      <option value="Letteratura">Letteratura</option>
+      <option value="Storia">Storia</option>
+      <option value="Altro">Altro</option>
+    </select>
+  </section>
+
+<!--<a href="{#{url_for('single_post', id=post.id)}#}""-->
+  <table class="table table-hover caption-top">
+   <!--table per tutti i corsi-->
+    <caption>Lista dei corsi disponibili</caption>
+    <thead id="mythead">
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Nome</th>
+        <th scope="col">Categoria</th>
+      </tr>
+    </thead>
+    <tbody class=" table-group-divider">
+      {% for corso in corsi %}
+      <tr class="ifcorso">
+        <th scope="row">{{ corso.id_corso }}</th>
+        <td><a href="{{url_for('single_course', id=corso.id_corso)}}">{{ corso.titolo }}</a></td>
+        <td class="corso_categoria">{{ corso.categoria }}</td>
+      </tr>
+      
+
+    </tbody>
+    {% endfor %}
+    
+  </table>
+  {% endif %}
+
+      {% if current_user.docente == 1 %}
+      <button type="button" class="mybutton" data-bs-toggle="modal" data-bs-target="#createModal">
+        +
+      </button>
+      <div class="modal fade" id="createModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5">Crea un nuovo corso!</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="/course/new" method="POST" enctype="multipart/form-data">
+              <div class="modal-body">
+                <fieldset disabled>
+                  <div class="mb-3">
+                    <label for="usrnameTextInput" class="form-label">Docente</label>
+                    <input type="text" id="usrnameTextInput" name="nome_docente" class="form-control"
+                      value="{{current_user.mail}}">
+                  </div>
+                </fieldset>
+                <div class="mb-3">
+                  <label for="titleTextInput" class="form-label">Titolo</label>
+                  <input type="text" id="titleTextInput" name="titolo" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                  <label for="categoryTextInput" class="form-label">Categoria</label>
+                  <select id="categories" name="categoria" class="form-select" aria-label="Default select example" required>
+                    <option value="Lingue">Lingue</option>
+                    <option value="Informatica">Informatica</option>
+                    <option value="Matematica">Matematica</option>
+                    <option value="Scienze">Scienze</option>
+                    <option value="Letteratura">Letteratura</option>
+                    <option value="Storia">Storia</option>
+                    <option value="Altro">Altro</option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label for="postTextarea" class="form-label">Breve descrizione del corso</label>
+                  <textarea class="form-control" id="postTextarea" name="descrizione" rows="3"
+                    placeholder="Inserisci una breve descrizione del corso" required minlength="30" ></textarea>
+                </div>
+                <div class="mb-3">
+                  <label for="imageFile" class="form-label">Aggiungi un'immagine del corso</label>
+                  <input class="form-control" name="immagine_corso" type="file" id="imageFile" accept="image/*" required>
+                </div>
+                <div class="mb-3">
+                  <label for="prerequisitiTextarea" class="form-label">Prerequisiti del corso</label>
+                  <textarea class="form-control" id="prerequisitiTextarea" name="prerequisiti" rows="3"
+                    placeholder="Inserisci i prerequisiti del corso, se vuoi!"  minlength="30" maxlength="500"></textarea>
+                </div>                
+              </div>
+
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
+                <button type="submit" class="btn btn-primary">Crea Corso</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      {% endif %}
+</main>
+
+{% endblock %}
+

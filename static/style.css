@@ -1,0 +1,101 @@
+.devimg {
+    display: inline;
+    height: 140px;
+    vertical-align: middle;
+}
+
+.usrimg {
+    display: inline;
+    height: 50px;
+    vertical-align: middle;
+    margin: 0.5rem 0.5rem 0.5rem 0rem;
+}
+
+.mybutton {
+    background-color: #0d6efd;;
+    border: none;
+    border-radius: 50%;
+    bottom: 30px;
+    color: white;
+    height: 60px;
+    position: fixed;
+    right: 30px;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
+    width: 60px;
+}
+
+.mynavbar {
+    background-color: #0d6efd;;
+    height: 4rem;
+}
+
+.username {
+    font-weight: 100;
+}
+
+.usernamecommenti {
+    font-weight: 80;
+}
+
+#myaside li {
+    padding-bottom: 5px;
+}
+
+#myaside ul {
+    list-style-type: none;
+    padding: 0rem 1rem;
+}
+
+#myheader h1 {
+    color: white;
+}
+
+#cardheading {
+    font-size: 40px;
+    font-weight: 700;
+    font-family: 'Poppins', sans-serif;
+}
+
+#mythead {
+    background-color: #0d6efd;
+}
+
+#mythead {
+    color: white;
+}
+
+#materialeheader {
+    background-image: url("materiale.jpg");
+    max-width: 100%;
+}
+
+#avvisiheader {
+    background-image: url("Senza\ titolo.jpeg");
+    max-width: 100%;
+    
+}
+
+
+@media (max-width: 991.98px) {
+
+    #myaside ul {
+        display: flex;
+        justify-content: space-between;
+        list-style-type: none;
+        padding: 0rem 1rem;
+    }
+
+    aside li {
+        display: inline;
+        list-style-type: none;
+        padding: 0em;
+        width: fit-content;
+    }
+
+
+}
+
+
+

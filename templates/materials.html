@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block title %}{{ corso.titolo }} - Materiale{% endblock %}
+
+{% block content %} 
+<main class="col-lg-9 col-md-12">
+    <div class="jumbotron bg-cover text-white" id="materialeheader">
+        <div class="container py-5 text-center">
+            <h1 class="display-4 font-weight-bold">Materiale</h1>
+            <p class="font-italic mb-0">Corso di {{ corso.titolo }}</p>
+            
+        </div>
+    </div>
+<div class="list-group mt-5 mb-3">
+  {% for materiale in materiali %}
+    <a href="/static/{{materiale.path}}" class="list-group-item list-group-item-action flex-column align-items-start " download>
+      <div class="d-flex w-100 justify-content-between">
+        <h5 class="mb-1">{{ materiale.titolo }}</h5>
+      </div>
+      <p class="mb-1">{{ materiale.path }}</p>
+      <small class="text-muted">Corso di {{ corso.titolo }}</small>
+    </a>
+
+    {% endfor %}
+    <!--add materiale se docente == 1-->
+    {% if current_user.docente == 1 %}
+    <form action="/courses/{{corso.id_corso}}/materials/new" method="POST" enctype="multipart/form-data"  class="list-group-item list-group-item-action flex-column align-items-start" >
+      <div class="mb-3">
+        <label for="titleTextInput" class="form-label">Carica un pdf, se vuoi!</label>
+        <input type="text" id="titleTextInput" name="titolo" class="form-control" placeholder="Inserisci il titolo" required>
+      </div>
+      <div class="mb-3">
+        <input type="file" class="form-control" id="customFile" name="path" accept="application/pdf" required/>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Carica</button>
+    </form>
+    {% endif %}
+
+  </div>
+
+
+
+</main>
+{% endblock %}

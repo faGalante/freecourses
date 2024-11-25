@@ -1,0 +1,10 @@
+Docenti: 
+giovanni.leone@gmail.com
+password: password
+maria.grazia@gmail.com
+password: password
+Studenti: 
+campobaffo@gmail.com
+password: password
+adriana.barone@gmail.com
+password: password

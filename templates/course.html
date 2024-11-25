@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block title %}Corso di {{corso.titolo |e}} {% endblock %}
+
+
+{% block content %} 
+<main class="col-lg-9 col-md-12">
+  {% if corso.materiale %}
+  <section class="mt-5 mb-3">
+    <ul class="nav justify-content-center">
+      <li class="nav-item">
+        <a class="nav-link"  href="{{url_for('materials', id=corso.id_corso)}}">Materiale</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{url_for('avvisi', id=corso.id_corso)}}">Avvisi</a>
+      </li>
+    </ul>
+    </section>
+    {% endif %}
+  <article class="row border p-2 mx-2 my-4">
+      <div class="col-lg-3 col-md-6 col-sm-12 px-0">
+        <img class="w-100 p-2" src="{{ url_for('static', filename=corso.immagine_corso) }}" alt="Questa è l'immagine del corso ">
+      </div>
+      <div class="col-lg-9 col-md-6 col-sm-12">
+        <section
+        class="d-flex align-items-center mt-2 mb-4">
+        <div><img class="usrimg rounded-circle"
+            src="{{ url_for('static', filename=corso.creatore.immagine_profilo ) }}"
+            alt="Questa è l'immagine del docente "></div>
+        <div>
+          <h3 >{{ corso.titolo |e }}</h3>
+          <h5 class="username">prof. {{corso.creatore.cognome |e}} {{corso.creatore.nome |e}}</h5>
+          
+        </div>
+        <div class="flex-grow-1 text-end">
+          <p>{{ corso.categoria |e }}</p>
+        </div>
+      </section>
+      <div class="card-body ">
+        <h5 class="card-title">{{ corso.descrizione |e }}</h5>
+        <hr class="border">
+        <div class="flex-grow-1 text-start ">
+          <p>Prerequisiti: </p>
+          <p class="float-grow 1 text-start ">{{ corso.prerequisiti |e }}</p>
+        </div>
+        {% if current_user.docente == 0 %}
+        <form action="/courses/{{corso.id_corso}}/subscription" method="POST" enctype="multipart/form-data">
+          {% if corso.frequenta_cu %}
+          <button type="submit" name="selezione" value="true" class="btn btn-primary">Disiscriviti dal corso</button>
+          {% else %}
+          <button type="submit" name="selezione" value="false" class="btn btn-primary">Iscriviti al corso!</button>
+          {% endif %}
+          </form>
+        {% endif %}
+
+      </div>
+    </div>
+
+    </article>
+
+</main>
+{% endblock %}
