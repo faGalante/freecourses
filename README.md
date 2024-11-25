@@ -54,26 +54,6 @@ FreeCourses è una piattaforma dove i docenti possono creare corsi, caricare mat
   - **SQLite** per la gestione dei dati relativi agli utenti, corsi, avvisi e materiale didattico
 
 ## Come avviare il progetto
-
-### 1. **Clonare il repository**:
-   Per prima cosa, clona il repository Git:
-   ```bash
-   git clone https://github.com/tuo-username/freecourses.git
-   ```
-
-### 2. **Installare le dipendenze**:
-   Assicurati di avere Python 3.10 installato e, se non lo hai già fatto, crea un ambiente virtuale e installa le dipendenze:
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-### 3. **Eseguire l'applicazione**:
-   Avvia l'applicazione Flask:
-   ```bash
-   python app.py
-   ```
-
-### 4. **Accedere alla piattaforma**:
    Puoi accedere all'applicazione visitando https://fagalante.eu.pythonanywhere.com/ nel tuo browser.
 
    - **Docenti**: 
