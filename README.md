@@ -57,11 +57,11 @@ FreeCourses è una piattaforma dove i docenti possono creare corsi, caricare mat
    Puoi accedere all'applicazione visitando https://fagalante.eu.pythonanywhere.com/ nel tuo browser.
 
    - **Docenti**: 
-     - Username: `docente1` | Password: `password1`
-     - Username: `docente2` | Password: `password2`
+     - Username: `scapola.alata@gmail.com` | Password: `password`
+     - Username: `maria.grazia@gmail.com` | Password: `password`
    - **Studenti**:
-     - Username: `studente1` | Password: `password3`
-     - Username: `studente2` | Password: `password4`
+     - Username: `clodina.costantina@libero.it` | Password: `password`
+     - Username: `campobaffo@gmail.com` | Password: `password`
 
 ## Struttura del progetto
 
